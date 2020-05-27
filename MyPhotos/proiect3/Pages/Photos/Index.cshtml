@@ -1,0 +1,57 @@
+﻿@page
+@model proiect3.Photos.IndexModel
+@{
+}
+
+    <form>
+       
+        <p>
+            <select asp-for="CuvantFilter" asp-items="Model.CuvantCheie">
+        </select>
+
+            Title: <input type="text" asp-for="@Model.Word" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemsPhoto[0].IId)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemsPhoto[0].IName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemsPhoto[0].IDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemsPhoto[0].IType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ItemsPhoto)
+            {
+            <tr style="font-size:small">
+                <td>
+                    @Html.DisplayFor(modelItem => item.IId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IType)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.IId">Details</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>

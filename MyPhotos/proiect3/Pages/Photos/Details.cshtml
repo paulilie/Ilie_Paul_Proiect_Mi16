@@ -1,0 +1,85 @@
+﻿@page
+@model proiect3.Photos.DetailsModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IId)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IDelete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IIsPhoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.curentItem.IPath)
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr style="font-size:small">
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IId)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IType)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IDelete)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IIsPhoto)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IMark)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.curentItem.IPath)
+            </td>
+
+
+        </tr>
+
+    </tbody>
+</table>
+
+@if (Model.curentItem.IIsPhoto == "true")
+{
+    byte[] img = System.IO.File.ReadAllBytes(Model.curentItem.IPath);
+    var converted = Convert.ToBase64String(img);
+    var imgSrc = String.Format("data:image;base64,{0}", converted);
+    <img src="@imgSrc" width=" 500" height="500" />
+}
